@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import CreateFormPage from "./pages/CreateFormPage";
+import FormsPage from "./pages/FormsPage";
+import Home from "./pages/Home";
+import ThankYouPage from "./pages/ThankYouPage";
+import FillFormPage from "./pages/FillFormPage";
+import FormResponsesPage from "./pages/FormResponsesPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* ✅ Admin-authenticated routes */}
+        <Route path="/home" element={isAdmin ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/create" element={isAdmin ? <CreateFormPage /> : <Navigate to="/login" />} />
+        <Route path="/forms" element={isAdmin ? <FormsPage /> : <Navigate to="/login" />} />
+        <Route path="/responses/:formId" element={isAdmin ? <FormResponsesPage /> : <Navigate to="/login" />} />
+
+        {/* ✅ Public routes */}
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<AdminLoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/fill/:formId" element={<FillFormPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
+      </Routes>
+    </Router>
   );
 }
 
