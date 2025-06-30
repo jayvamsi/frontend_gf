@@ -9,6 +9,7 @@ import FillFormPage from "./pages/FillFormPage";
 import FormResponsesPage from "./pages/FormResponsesPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
