@@ -9,7 +9,7 @@ function AdminLoginPage() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("isAdmin") === "true") {
+    if (sessionStorage.getItem("isAdmin") === "true") {
       navigate("/home");
     }
   }, [navigate]);
@@ -27,10 +27,10 @@ function AdminLoginPage() {
       console.log("Login response:", data);
 
       if (res.ok && data.success) {
-        localStorage.setItem("isAdmin", "true");
-        localStorage.setItem("adminToken", data.token || "default-admin-token");
-        localStorage.setItem("adminEmail", data.email); // 👈 already needed
-        localStorage.setItem("adminUsername", data.username); // 👈 new
+        sessionStorage.setItem("isAdmin", "true");
+        sessionStorage.setItem("adminToken", data.token || "default-admin-token");
+        sessionStorage.setItem("adminEmail", data.email); // 👈 already needed
+        sessionStorage.setItem("adminUsername", data.username); // 👈 new
 
         // ✅ Instant redirect (avoids lag)
         window.location.href = "/home";
