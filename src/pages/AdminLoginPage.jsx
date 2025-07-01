@@ -8,20 +8,11 @@ function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("isAdmin") === "true") {
-  //     navigate("/home");
-  //   }
-  // }, [navigate]);
-
   useEffect(() => {
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
-  if (isAdmin) {
-    // navigate("/home", { replace: true });
-    window.location.href = "/home";
-  }
-}, []);
-
+    if (localStorage.getItem("isAdmin") === "true") {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();

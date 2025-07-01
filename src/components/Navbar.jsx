@@ -8,16 +8,16 @@ function Navbar() {
   const isUserPage =
     location.pathname.startsWith("/fill") || location.pathname === "/thank-you";
 
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
-  const username = isAdmin ? localStorage.getItem("adminUsername") : null;
+  const isAdmin = sessionStorage.getItem("isAdmin") === "true";
+  const username = isAdmin ? sessionStorage.getItem("adminUsername") : null;
 
   const handleLogout = () => {
     const confirmed = window.confirm("Are you sure you want to logout?");
     if (confirmed) {
-      localStorage.removeItem("isAdmin");
-      localStorage.removeItem("adminToken");
-      localStorage.removeItem("adminEmail");
-      localStorage.removeItem("adminUsername");
+      sessionStorage.removeItem("isAdmin");
+      sessionStorage.removeItem("adminToken");
+      sessionStorage.removeItem("adminEmail");
+      sessionStorage.removeItem("adminUsername");
       navigate("/login");
     }
   };
