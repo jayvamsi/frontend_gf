@@ -9,8 +9,8 @@ function FormsPage() {
   useEffect(() => {
     fetch("https://gf-backend-im3h.onrender.com/api/forms", {
       headers: {
-        "x-admin-token": sessionStorage.getItem("adminToken"),
-        "x-admin-email": sessionStorage.getItem("adminEmail")
+        "x-admin-token": localStorage.getItem("adminToken"),
+        "x-admin-email": localStorage.getItem("adminEmail")
       },
     })
       .then((res) => res.json())
@@ -33,14 +33,14 @@ function FormsPage() {
       const [formRes, respRes] = await Promise.all([
         fetch(`https://gf-backend-im3h.onrender.com/api/forms/${formId}`, {
           headers: {
-            "x-admin-token": sessionStorage.getItem("adminToken"),
-            "x-admin-email": sessionStorage.getItem("adminEmail")
+            "x-admin-token": localStorage.getItem("adminToken"),
+            "x-admin-email": localStorage.getItem("adminEmail")
           },
         }),
         fetch(`https://gf-backend-im3h.onrender.com/api/forms/${formId}/responses`, {
           headers: {
-            "x-admin-token": sessionStorage.getItem("adminToken"),
-            "x-admin-email": sessionStorage.getItem("adminEmail")
+            "x-admin-token": localStorage.getItem("adminToken"),
+            "x-admin-email": localStorage.getItem("adminEmail")
           },
         }),
       ]);
@@ -63,8 +63,8 @@ function FormsPage() {
       await fetch(`https://gf-backend-im3h.onrender.com/api/forms/${selectedFormId}/responses/${index}`, {
         method: "DELETE",
         headers: {
-          "x-admin-token": sessionStorage.getItem("adminToken"),
-          "x-admin-email": sessionStorage.getItem("adminEmail")
+          "x-admin-token": localStorage.getItem("adminToken"),
+          "x-admin-email": localStorage.getItem("adminEmail")
         },
       });
 
@@ -82,8 +82,8 @@ function FormsPage() {
       await fetch(`https://gf-backend-im3h.onrender.com/api/forms/${formId}`, {
         method: "DELETE",
         headers: {
-          "x-admin-token": sessionStorage.getItem("adminToken"),
-          "x-admin-email": sessionStorage.getItem("adminEmail")
+          "x-admin-token": localStorage.getItem("adminToken"),
+          "x-admin-email": localStorage.getItem("adminEmail")
         },
       });
 

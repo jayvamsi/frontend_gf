@@ -108,8 +108,8 @@ function FormBuilder({ prefill, onSave }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-token": sessionStorage.getItem("adminToken"),
-          "x-admin-email": sessionStorage.getItem("adminEmail")
+          "x-admin-token": localStorage.getItem("adminToken"),
+          "x-admin-email": localStorage.getItem("adminEmail")
         },
         body: JSON.stringify(form),
       });

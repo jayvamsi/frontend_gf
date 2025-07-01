@@ -21,8 +21,8 @@ function CreateFormPage() {
       const res = await fetch("https://gf-backend-im3h.onrender.com/api/forms", {
         method: "GET",
         headers: {
-          "x-admin-token": sessionStorage.getItem("adminToken"),
-          "x-admin-email": sessionStorage.getItem("adminEmail")
+          "x-admin-token": localStorage.getItem("adminToken"),
+          "x-admin-email": localStorage.getItem("adminEmail")
         },
       });
 
